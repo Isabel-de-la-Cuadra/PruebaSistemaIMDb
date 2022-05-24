@@ -37,7 +37,7 @@
 							<td><c:out value="${show.showTittle}"></c:out></td>
 							<td><c:out value="${show.showNetwork}"></c:out></td>
 							<td><a class="btn btn-primary"
-								href="/show/${show.id}" role="button"> Select
+								href="/show/rating/${show.id}" role="button"> Select
 							</a></td>
 							<td><a class="btn btn-primary"
 								href="/show/edit/${show.id}" role="button"> <svg

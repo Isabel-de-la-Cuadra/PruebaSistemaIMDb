@@ -6,7 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page='../templates/header.jsp'>
-	<jsp:param name='title' value='Rate:' />
+	<jsp:param name='title' value='Rating:' />
 </jsp:include>
 
 <body>
@@ -15,53 +15,34 @@
 		<jsp:param name='title' value='Sistema IMDb' />
 	</jsp:include>
 	<br>
-	<h1> 	Welcome, ${userIMDbEmail}</h1>
-	<br>
-	<h3> TV Shows</h3>
-	<br>
 	
-	<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">Show</th>
-						<th scope="col">Network</th>
-						<th scope="col">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="show" items="${listShows}">
-						<tr>
-							<th scope="row"><c:out value="${show.id}"></c:out></th>
-							<td><c:out value="${show.showTitte}"></c:out></td>
-							<td><c:out value="${show.showNetwork}"></c:out></td>
-							<td><a class="btn btn-primary"
-								href="/show/${show.id}" role="button"> Select
-							</a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
-			<div class="row">
-				<div class="col-md-2"></div>
-				<h4 class="fs-6 fst-italic">(Exist ${totalElements} shows)</h4>
-				<h4 class="fs-6 fst-italic">(I will show them from ${size}
-					shows)</h4>
-				<div class="col-md-8">
-					<nav aria-label="Pagination">
-						<ul class="pagination pagination-lg justify-content-center">
-							<c:forEach begin="1" end="${totalPages}" var="page">
-								<li class="page-item"><a class="page-link"
-									href="list?page=${page}&size=${size}">${page}</a></li>
-							</c:forEach>
-						</ul>
-					</nav>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
+	<div class="container">
+		<h1>${userIMDbEmail} do you want to rating this show?</h1>
+		<br>
+		<h3>TV Shows</h3>
+		<h3>Title: ${ShowId.showTittle}</h3>
+		<h3>Network: ${ShowId.showNetwork}</h3>
+		<br>
+		<div class="mb-3">
+			<form:label class="form-label" path="rating">Select the level of your rating</form:label>
+			<form:select class="form-select" path="rating">
+				<form:options path="rating" items="${rating}" />
+			</form:select>
 		</div>
+	
+		<div class="contenedor-icono">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<a class="btn btn-primary ms-auto">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+  										<path
+						d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+									</svg>
+				Rating
+			</a>
+		</div>
+</div>
+	<br>
 
 	<br>
 	<br>

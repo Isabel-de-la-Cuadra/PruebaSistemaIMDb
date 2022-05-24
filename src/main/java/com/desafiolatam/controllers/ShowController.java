@@ -18,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.desafiolatam.models.Rating;
 import com.desafiolatam.models.Show;
 import com.desafiolatam.services.ShowService;
+import com.desafiolatam.services.UserIMDbService;
+import com.desafiolatam.services.UsersIMDbShowsService;
 
 @Controller
 @RequestMapping("/show")
@@ -27,6 +30,12 @@ public class ShowController {
 
 	@Autowired
 	ShowService showService;
+	
+	@Autowired
+	UserIMDbService userIMDbService;
+	
+	@Autowired
+	UsersIMDbShowsService userIMDbShowsService;
 	
 	@RequestMapping("/add")
 	public String showCreateNew(@ModelAttribute("show") Show show) {
@@ -97,5 +106,20 @@ public class ShowController {
 		}
 	}
 	
+	@RequestMapping("/rating/{id}")
+	public String ratingShow(@PathVariable("id") Long showId, 
+			Rating rating, Model model) {
+		model.addAttribute("ShowId", showService.findByIdShow(showId));
+		model.addAttribute("rating", Rating.values());
+
+		return "views/rate.jsp";
+	}
+	
+	//Falta implementar la captura de data para llenar la tabla intermedia entre UserIMDb y Show: UsersIMDbShows
+	/*@PostMapping("/qualified")
+	public String qualifiedShow() {
+		redirectAttributes.addFlashAttribute("msgOk","I recorded your rating");
+		return "redirect:/homes";
+	}*/
 	
 }

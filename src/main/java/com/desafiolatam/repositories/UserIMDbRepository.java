@@ -9,4 +9,5 @@ import com.desafiolatam.models.UserIMDb;
 public interface UserIMDbRepository extends JpaRepository<UserIMDb, Long> {
 
 	UserIMDb findByEmail(String email);
+	
 }

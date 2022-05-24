@@ -1,6 +1,7 @@
 package com.desafiolatam.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,11 @@ public class UserIMDbService {
 		return userIMDb;
 	}
 
+	public Optional<UserIMDb> findById(Long userIMDbId) {
+		Optional<UserIMDb> userIMDb = userIMDbRepository.findById(userIMDbId.longValue());
+		return userIMDb;
+	}
+	
 	public List<UserIMDb> findAll() {
 		return userIMDbRepository.findAll();
 	}

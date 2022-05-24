@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,7 +26,6 @@ public class UsersIMDbShows {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
 	//ManyToMany = 2 ManyToOne
 	//1 ManyToOne FK
 	@JsonBackReference
@@ -35,7 +33,6 @@ public class UsersIMDbShows {
 	@JoinColumn(name = "userIMDb_id")
 	private UserIMDb userIMDb;
 	
-	@NotNull
 	//2 ManyToOne FK
 	@JsonBackReference //Se coloca donde está la FK
 	@ManyToOne (fetch = FetchType.LAZY)
@@ -62,13 +59,13 @@ public class UsersIMDbShows {
 	public UsersIMDbShows() {
 		super();
 	}
-	public UsersIMDbShows(@NotNull UserIMDb userIMDb, @NotNull Show show, Rating rating) {
+	public UsersIMDbShows(UserIMDb userIMDb, Show show, Rating rating) {
 		super();
 		this.userIMDb = userIMDb;
 		this.show = show;
 		this.rating = rating;
 	}
-	public UsersIMDbShows(Long id, @NotNull UserIMDb userIMDb, @NotNull Show show, Rating rating, Date createdAt, Date updatedAt) {
+	public UsersIMDbShows(Long id, UserIMDb userIMDb, Show show, Rating rating, Date createdAt, Date updatedAt) {
 		super();
 		this.id = id;
 		this.userIMDb = userIMDb;
