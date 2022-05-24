@@ -6,7 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page='../templates/header.jsp'>
-	<jsp:param name='title' value='Home:' />
+	<jsp:param name='title' value='Rate:' />
 </jsp:include>
 
 <body>
@@ -15,7 +15,7 @@
 		<jsp:param name='title' value='Sistema IMDb' />
 	</jsp:include>
 	<br>
-	<h1> Welcome, <jsp:param name='userIMDbEmail' value='${userIMDbEmail}' /></h1>
+	<h1> 	Welcome, ${userIMDbEmail}</h1>
 	<br>
 	<h3> TV Shows</h3>
 	<br>

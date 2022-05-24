@@ -74,7 +74,7 @@ public class ShowController {
 	public String deleteShow(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 		showService.deleteByIdShow(id);
 		redirectAttributes.addFlashAttribute("msgOk","The show was deleted");
-		return "views/home.jsp";
+		return "redirect:/homes"; 
 	}
 	
 	@RequestMapping("/edit/{id}")
@@ -90,11 +90,12 @@ public class ShowController {
 		if(!result.hasErrors()) {
 			showService.saveShow(show);
 			redirectAttributes.addFlashAttribute("msgOk","The show was modified");
-			return "views/home.jsp";
+			return "redirect:/homes";
 		}else {
 			redirectAttributes.addFlashAttribute("msgError","Sorry, missing information");
 			return "views/edit.jsp";
 		}
 	}
+	
 	
 }

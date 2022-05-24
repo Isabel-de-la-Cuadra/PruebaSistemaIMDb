@@ -41,7 +41,7 @@
 
 						<div class="mb-3">
 							<form:input type="text" class="form-control" path="showTittle"
-								placeholder="Show Tittle" />
+								placeholder="Show Title" />
 							<form:errors path="showTittle" class="text-danger" />
 						</div>
 
